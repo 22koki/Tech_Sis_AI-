@@ -15,8 +15,17 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+
+from django.http import HttpResponse
+from rest_framework.authtoken import views
+
+def welcome(request):
+    return HttpResponse("<h1>Welcome to TechSister AI API</h1><p>Go to <a href='/api/'>/api/</a> to view the API endpoints.</p>")
 
 urlpatterns = [
+    path('', welcome),  # 👈 add this line
     path('admin/', admin.site.urls),
+    path('api/', include('core.urls')),
+    path('api-token-auth/', views.obtain_auth_token), 
 ]

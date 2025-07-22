@@ -77,11 +77,12 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'techsister_db',
         'USER': 'fay',
-        'PASSWORD': 'Kora2020/q',
+        'PASSWORD': 'my_secure_pass123',  # must match exactly
         'HOST': 'localhost',
         'PORT': '5432',
     }
 }
+
 
 
 

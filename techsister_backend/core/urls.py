@@ -8,7 +8,10 @@ from .views import (
     ConfidenceLogViewSet,
     MentorViewSet,
     MentorshipMatchViewSet,
-    SessionFeedbackViewSet
+    SessionFeedbackViewSet,
+    StudyMaterialViewSet,
+    AgeBasedTipViewSet,
+    StructuredContentViewSet
 )
 
 router = DefaultRouter()
@@ -20,6 +23,10 @@ router.register(r'confidence-logs', ConfidenceLogViewSet, basename='confidencelo
 router.register(r'mentors', MentorViewSet, basename='mentor')
 router.register(r'matches', MentorshipMatchViewSet, basename='match')
 router.register(r'session-feedbacks', SessionFeedbackViewSet, basename='sessionfeedback')
+# core/urls.py
+router.register(r'study-materials', StudyMaterialViewSet)
+router.register(r'age-tips', AgeBasedTipViewSet)
+router.register(r'structured-content', StructuredContentViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),

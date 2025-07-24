@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-# 1. UserProfile
+# 1. User Profile
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     age = models.PositiveIntegerField(null=True, blank=True)
@@ -27,7 +27,7 @@ class UserProfile(models.Model):
         return self.user.username
 
 
-# 2. EducationalContent — main wrapper for all content
+# 2. Educational Content
 class EducationalContent(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField()
@@ -55,7 +55,7 @@ class EducationalContent(models.Model):
         return f"{self.title} ({self.age_group})"
 
 
-# 3. StudyMaterial — file uploads
+# 3. Study Material
 class StudyMaterial(models.Model):
     content = models.ForeignKey(EducationalContent, related_name='materials', on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
@@ -68,7 +68,7 @@ class StudyMaterial(models.Model):
         return f"Material for {self.content.title}"
 
 
-# 4. Course and Module as before (for ages 15–18)
+# 4. Courses and Modules
 class Course(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField()
@@ -104,16 +104,16 @@ class Module(models.Model):
 
 # 5. Progress Tracking
 class Progress(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user_profile = models.ForeignKey(UserProfile, on_delete=models.CASCADE, null=True, blank=True)
     module = models.ForeignKey(Module, on_delete=models.CASCADE)
     completed = models.BooleanField(default=False)
     completed_at = models.DateTimeField(null=True, blank=True)
 
     def __str__(self):
-        return f"{self.user.username} - {self.module.title}"
+        return f"{self.user_profile.user.username} - {self.module.title}"
 
 
-# 6. Confidence Log + Bot Mood Reflection
+# 6. Confidence Log
 class ConfidenceLog(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     reflection_text = models.TextField()
@@ -125,7 +125,7 @@ class ConfidenceLog(models.Model):
         return f"{self.user.username} - {self.created_at.strftime('%Y-%m-%d')}"
 
 
-# 7. Mentorship Features
+# 7. Mentorship
 class Mentor(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     expertise = models.CharField(max_length=100)
@@ -156,3 +156,37 @@ class SessionFeedback(models.Model):
 
     def __str__(self):
         return f"Feedback by {self.user.username} on {self.created_at.strftime('%Y-%m-%d')}"
+
+
+# 8. Age-Based Tips and Content
+class AgeBasedContent(models.Model):
+    title = models.CharField(max_length=255)
+    age_min = models.IntegerField()
+    age_max = models.IntegerField()
+    language = models.CharField(max_length=50)
+    content_type = models.CharField(max_length=50)
+    content = models.TextField()
+
+    def __str__(self):
+        return self.title
+
+
+class AgeBasedTip(models.Model):
+    age_min = models.IntegerField()
+    age_max = models.IntegerField()
+    tip = models.TextField()
+    language = models.CharField(max_length=50, default='English')
+
+    def __str__(self):
+        return f"Tip for {self.age_min}-{self.age_max}"
+
+
+class StructuredContent(models.Model):
+    age_group = models.CharField(max_length=50)
+    category = models.CharField(max_length=100)  # e.g., "Health", "Finance", "Coding"
+    language = models.CharField(max_length=50, default='English')
+    title = models.CharField(max_length=255)
+    content = models.TextField()
+
+    def __str__(self):
+        return f"{self.title} ({self.age_group}, {self.category})"

@@ -5,6 +5,7 @@ from .models import (
     ConfidenceLog, Mentor, MentorshipMatch,
     SessionFeedback, AgeBasedContent, StudyMaterial
 )
+from .models import StudyMaterial, AgeBasedTip, StructuredContent
 
 # User Serializer (Nested or used on its own)
 class UserSerializer(serializers.ModelSerializer):
@@ -93,4 +94,18 @@ class StudyMaterialSerializer(serializers.ModelSerializer):
 class AgeBasedContentSerializer(serializers.ModelSerializer):
     class Meta:
         model = AgeBasedContent
+        fields = '__all__'
+class StudyMaterialSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = StudyMaterial
+        fields = '__all__'
+
+class AgeBasedTipSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AgeBasedTip
+        fields = '__all__'
+
+class StructuredContentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = StructuredContent
         fields = '__all__'

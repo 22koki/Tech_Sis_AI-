@@ -10,6 +10,7 @@ router.register(r'progress', ProgressViewSet)
 router.register(r'confidence-logs', ConfidenceLogViewSet)
 router.register(r'mentors', MentorViewSet)
 router.register(r'matches', MentorshipMatchViewSet)
+router.register(r'session-feedbacks', SessionFeedbackViewSet)  # ✅ Add this
 
 urlpatterns = [
     path('', include(router.urls)),

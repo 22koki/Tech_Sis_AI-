@@ -8,6 +8,11 @@ from .models import (
 )
 from .serializers import *
 
+
+from .models import StudyMaterial, AgeBasedTip, StructuredContent
+from .serializers import StudyMaterialSerializer, AgeBasedTipSerializer, StructuredContentSerializer
+
+
 # 1. User Profile
 class UserProfileViewSet(viewsets.ModelViewSet):
     queryset = UserProfile.objects.all()
@@ -83,3 +88,14 @@ class MentorshipMatchViewSet(viewsets.ModelViewSet):
 class SessionFeedbackViewSet(viewsets.ModelViewSet):
     queryset = SessionFeedback.objects.all()
     serializer_class = SessionFeedbackSerializer
+class StudyMaterialViewSet(viewsets.ModelViewSet):
+    queryset = StudyMaterial.objects.all()
+    serializer_class = StudyMaterialSerializer
+
+class AgeBasedTipViewSet(viewsets.ModelViewSet):
+    queryset = AgeBasedTip.objects.all()
+    serializer_class = AgeBasedTipSerializer
+
+class StructuredContentViewSet(viewsets.ModelViewSet):
+    queryset = StructuredContent.objects.all()
+    serializer_class = StructuredContentSerializer

@@ -1,0 +1,61 @@
+.study-materials-page {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 20px;
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-color);
+  }
+  
+  .study-materials-page h2 {
+    text-align: center;
+    font-size: 28px;
+    color: var(--accent-color);
+    margin-bottom: 30px;
+  }
+  
+  .material-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+  }
+  
+  .material-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 20px;
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+  }
+  
+  .material-card:hover {
+    transform: translateY(-6px);
+  }
+  
+  .material-card h3 {
+    margin-bottom: 10px;
+    font-size: 20px;
+    color: var(--accent-color);
+  }
+  
+  .material-card p {
+    margin: 8px 0;
+    font-size: 15px;
+  }
+  
+  .material-card a {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 14px;
+    font-weight: bold;
+    color: #fff;
+    background: var(--accent-color);
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.3s;
+  }
+  
+  .material-card a:hover {
+    background: var(--accent-dark);
+  }
+  

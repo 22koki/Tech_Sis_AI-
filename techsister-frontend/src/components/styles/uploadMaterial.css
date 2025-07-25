@@ -1,0 +1,67 @@
+.upload-page {
+    max-width: 700px;
+    margin: 60px auto;
+    padding: 30px 40px;
+    background: var(--card-bg);
+    border-radius: 16px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    color: var(--text-color);
+    font-family: 'Poppins', sans-serif;
+    transition: background 0.3s, color 0.3s;
+  }
+  
+  .upload-page h2 {
+    margin-bottom: 25px;
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--accent-color);
+    text-align: center;
+  }
+  
+  .upload-page label {
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    font-weight: 500;
+  }
+  
+  .upload-page input[type="text"],
+  .upload-page select,
+  .upload-page textarea,
+  .upload-page input[type="file"] {
+    width: 100%;
+    padding: 12px 14px;
+    margin-top: 4px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--input-bg);
+    color: var(--text-color);
+    font-size: 16px;
+    transition: border-color 0.2s;
+  }
+  
+  .upload-page input:focus,
+  .upload-page textarea:focus,
+  .upload-page select:focus {
+    outline: none;
+    border-color: var(--accent-color);
+  }
+  
+  .upload-page button {
+    margin-top: 30px;
+    width: 100%;
+    padding: 14px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background: var(--accent-color);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .upload-page button:hover {
+    background: var(--accent-dark);
+  }
+  

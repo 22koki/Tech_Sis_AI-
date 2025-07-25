@@ -1,0 +1,72 @@
+.ai-coach-container {
+    max-width: 600px;
+    margin: 60px auto;
+    background: rgba(255, 255, 255, 0.08);
+    padding: 40px 30px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4);
+    border: 2px solid #ff61d2;
+    color: #fff;
+    animation: fadeIn 0.8s ease-in-out;
+  }
+  
+  .ai-coach-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #f7a8f0;
+  }
+  
+  textarea {
+    width: 100%;
+    height: 120px;
+    border-radius: 12px;
+    border: none;
+    padding: 15px;
+    font-size: 1rem;
+    background-color: #2d2e4f;
+    color: #fff;
+    margin-bottom: 20px;
+    resize: none;
+  }
+  
+  button {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(to right, #7f5af0, #ff61d2);
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+  
+  button:hover {
+    transform: scale(1.05);
+  }
+  
+  .ai-response-box {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #21223f;
+    border-radius: 12px;
+    border-left: 6px solid #7f5af0;
+  }
+  
+  .tone-confident {
+    border-color: #00e676;
+  }
+  .tone-nervous {
+    border-color: #ffab00;
+  }
+  .tone-neutral {
+    border-color: #7f5af0;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  

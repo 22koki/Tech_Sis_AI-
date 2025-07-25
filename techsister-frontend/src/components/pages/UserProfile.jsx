@@ -1,40 +1,48 @@
-import React, { useEffect, useState } from 'react';
-import api from '../api/axios';
-import '../styles/UserProfile.css';  // ✅ Import the CSS styling
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import "../styles/profile.css";
 
-const UserProfile = () => {
+function UserProfile() {
   const [profile, setProfile] = useState(null);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    api.get('/user-profiles/')
-      .then((res) => {
-        setProfile(res.data[0]);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.error('Error fetching profile:', err);
-        setLoading(false);
-      });
+    const fetchProfile = async () => {
+      try {
+        const token = localStorage.getItem("token"); // or sessionStorage if you're using that
+        const response = await axios.get("http://localhost:8000/api/profile/", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        setProfile(response.data);
+      } catch (error) {
+        console.error("Error fetching profile:", error);
+      }
+    };
+
+    fetchProfile();
   }, []);
 
-  if (loading) return <p className="profile-loading">Loading profile...</p>;
-  if (!profile) return <p className="profile-error">No profile found.</p>;
+  if (!profile) return <div className="profile-page">Loading profile...</div>;
 
   return (
-    <div className="profile-container">
-      <div className="profile-card">
-        <h2 className="profile-heading">👩🏾‍💻 My TechSister Profile</h2>
-        <ul className="profile-list">
-          <li><strong>Username:</strong> {profile.user}</li>
-          <li><strong>Age:</strong> {profile.age}</li>
-          <li><strong>Learning Style:</strong> {profile.learning_style}</li>
-          <li><strong>Preferred Track:</strong> {profile.preferred_track || 'Not chosen yet'}</li>
-          <li><strong>Track Decided:</strong> {profile.is_track_decided ? '✅ Yes' : '❌ No'}</li>
-        </ul>
+    <div className="profile-page">
+      <div className="profile-card animated-slide-in">
+        <h2 className="profile-title">👩🏽‍💻 My Profile</h2>
+
+        <div className="profile-info">
+          <p><strong>Full Name:</strong> {profile.full_name}</p>
+          <p><strong>Username:</strong> @{profile.username}</p>
+          <p><strong>Age:</strong> {profile.age}</p>
+          <p><strong>Focus Area:</strong> {profile.focus_area}</p>
+          <p><strong>Interests:</strong> {profile.interests}</p>
+          <p><strong>Joined:</strong> {profile.joined}</p>
+        </div>
+
+        <button className="edit-btn glow-button">Edit Profile</button>
       </div>
     </div>
   );
-};
+}
 
 export default UserProfile;

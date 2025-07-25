@@ -4,7 +4,11 @@ import { Routes, Route,  } from "react-router-dom";
 import Signup from "./components/pages/Signup";
 import Login from "./components/pages/Login";
 import Dashboard from "./components/pages/Dashboard";
-import UserProfile from './pages/UserProfile';
+import UserProfile from './components/pages/Dashboard';
+import AiCoach from'./components/pages/AiCoach';
+import CoursesPage from'./components/pages/CoursesPage';
+import StudyMaterials from'./components/pages/StudyMaterials';
+
 
 function App() {
   const [theme, setTheme] = useState("light");
@@ -29,6 +33,11 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/dashboard" element={<Dashboard />} /> {/* ✅ This uses it */}
           <Route path="/profile" element={<UserProfile />} />
+          <Route path="/ai-coach" element={<AiCoach />} />
+          <Route path="/courses" element={<CoursesPage />} />
+          <Route path="/materials" element={<StudyMaterials />} />
+
+
           {/* Add other routes as needed */}
           </Routes>
       </main>

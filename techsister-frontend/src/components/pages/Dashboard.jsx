@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { FaBook, FaUserFriends, FaUser, FaSun, FaMoon, FaChalkboardTeacher, FaComments, FaCheckCircle } from "react-icons/fa";
 import '../styles/global.css';
 
+
 function Dashboard() {
   const [darkMode, setDarkMode] = useState(true);
   const toggleTheme = () => {

@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+
+/* 🌐 GLOBAL RESET */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #1a1a2e;
+  background-image: linear-gradient(to bottom right, #1f1f3a, #2d2d4b);
+  color: #f0f0f0;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ☀️ Light Mode */
+body.light-mode {
+  background: #fff8fc;
+  color: #1a1a2e;
+}
+
+body.light-mode .login-card {
+  background: rgba(255, 255, 255, 0.95);
+  color: #1a1a2e;
+  border-color: #7f5af0;
+  box-shadow: 0 8px 24px rgba(127, 90, 240, 0.2);
+}
+
+body.light-mode .login-form input {
+  background: #f0f0f0;
+  color: #1a1a2e;
+}
+
+body.light-mode .login-form input:focus {
+  background-color: #fff;
+  border: 1px solid #7f5af0;
+}
+
+/* 💻 Login Layout */
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
+}
+
+.login-card {
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 3rem 2.5rem;
+  border-radius: 16px;
+  border: 2px solid #7f5af0;
+  box-shadow: 0 8px 30px rgba(127, 90, 240, 0.3);
+  max-width: 400px;
+  width: 100%;
+  backdrop-filter: blur(12px);
+  animation: fadeInUp 1s ease;
+}
+
+.login-title {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: #f7a8f0;
+}
+
+/* 🌟 Form */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.input-wrapper {
+  position: relative;
+}
+
+.input-icon {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+  color: #b07bff;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 0.8rem 0.8rem 0.8rem 2.5rem;
+  border: none;
+  border-radius: 10px;
+  background-color: #21223f;
+  color: #fff;
+  font-size: 1rem;
+  transition: transform 0.2s ease;
+}
+
+.login-form input:focus {
+  outline: none;
+  transform: scale(1.02);
+  background-color: #2d2e4f;
+}
+
+/* 🌈 Button */
+.login-btn {
+  background: linear-gradient(to right, #7f5af0, #ff61d2);
+  color: white;
+  border: none;
+  padding: 0.9rem;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 6px 20px rgba(127, 90, 240, 0.5);
+}
+
+.login-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 25px rgba(127, 90, 240, 0.7);
+}
+
+/* ✨ Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

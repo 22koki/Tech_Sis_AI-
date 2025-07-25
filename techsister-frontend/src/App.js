@@ -8,7 +8,10 @@ import UserProfile from './components/pages/Dashboard';
 import AiCoach from'./components/pages/AiCoach';
 import CoursesPage from'./components/pages/CoursesPage';
 import StudyMaterials from'./components/pages/StudyMaterials';
+import UploadMaterialPage from "./components/pages/UploadMaterialPage"
 
+import MentorshipPage from "./components/pages/MentorshipPage";
+import ProgressPage from "./components/pages/ProgressPage";
 
 function App() {
   const [theme, setTheme] = useState("light");
@@ -36,7 +39,10 @@ function App() {
           <Route path="/ai-coach" element={<AiCoach />} />
           <Route path="/courses" element={<CoursesPage />} />
           <Route path="/materials" element={<StudyMaterials />} />
+          <Route path="/mentorship" element={<MentorshipPage />} />
+          <Route path="/progress" element={<ProgressPage />} />
 
+          <Route path="/upload" element={<UploadMaterialPage />} />
 
           {/* Add other routes as needed */}
           </Routes>

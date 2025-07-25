@@ -111,6 +111,12 @@ class Progress(models.Model):
 
     def __str__(self):
         return f"{self.user_profile.user.username} - {self.module.title}"
+class Tip(models.Model):
+    age_range = models.CharField(max_length=50)
+    tip = models.TextField()
+
+    def __str__(self):
+        return f"Tip for age {self.age_range}"
 
 
 # 6. Confidence Log

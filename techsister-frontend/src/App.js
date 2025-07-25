@@ -4,6 +4,7 @@ import { Routes, Route,  } from "react-router-dom";
 import Signup from "./components/pages/Signup";
 import Login from "./components/pages/Login";
 import Dashboard from "./components/pages/Dashboard";
+import UserProfile from './pages/UserProfile';
 
 function App() {
   const [theme, setTheme] = useState("light");
@@ -27,7 +28,9 @@ function App() {
           <Route path="/" element={<Signup />} />
           <Route path="/login" element={<Login />} />
           <Route path="/dashboard" element={<Dashboard />} /> {/* ✅ This uses it */}
-        </Routes>
+          <Route path="/profile" element={<UserProfile />} />
+          {/* Add other routes as needed */}
+          </Routes>
       </main>
     </div>
   );

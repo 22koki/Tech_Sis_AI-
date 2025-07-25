@@ -1,5 +1,6 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
+
 from .views import (
     UserProfileViewSet,
     CourseViewSet,
@@ -11,7 +12,9 @@ from .views import (
     SessionFeedbackViewSet,
     StudyMaterialViewSet,
     AgeBasedTipViewSet,
-    StructuredContentViewSet
+    ReflectAPIView,
+
+
 )
 
 router = DefaultRouter()
@@ -26,7 +29,7 @@ router.register(r'session-feedbacks', SessionFeedbackViewSet, basename='sessionf
 # core/urls.py
 router.register(r'study-materials', StudyMaterialViewSet)
 router.register(r'age-tips', AgeBasedTipViewSet)
-router.register(r'structured-content', StructuredContentViewSet)
+# router.register(r'structured-content', StructuredContentViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
@@ -34,4 +37,8 @@ urlpatterns = [
     # Optional: custom endpoints (if not using DRF @action URLs)
     # path('user-profiles/<int:pk>/content/', UserProfileViewSet.as_view({'get': 'content_by_age'})),
     # path('mentors/<int:pk>/mentees/', MentorViewSet.as_view({'get': 'available_mentees'})),
+]
+
+urlpatterns = [
+    path('reflect/', ReflectAPIView.as_view(), name='reflect'),
 ]

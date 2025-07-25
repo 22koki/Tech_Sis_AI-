@@ -7,6 +7,7 @@ from .models import (
     ConfidenceLog, Mentor, MentorshipMatch, SessionFeedback
 )
 from .serializers import *
+from rest_framework.views import APIView
 
 
 from .models import StudyMaterial, AgeBasedTip, StructuredContent
@@ -105,6 +106,47 @@ class AgeBasedTipViewSet(viewsets.ModelViewSet):
 class StructuredContentViewSet(viewsets.ModelViewSet):
     queryset = StructuredContent.objects.all()
     serializer_class = StructuredContentSerializer
+
+import random
+from rest_framework.views import APIView
+from rest_framework.response import Response
+
+class ReflectAPIView(APIView):
+    def post(self, request):
+        reflection = request.data.get("reflection", "").lower()
+
+        encouraging_responses = [
+            "You're doing amazing! Keep it up!",
+            "Even tough days help us grow — you're strong.",
+            "Remember why you started. You've got this!",
+        ]
+
+        supportive_responses = [
+            "It's okay to feel unsure — that's how we learn!",
+            "Take a deep breath. You're not alone.",
+            "Keep going, one small step at a time."
+        ]
+
+        excited_responses = [
+            "Yay! That’s so exciting! Keep that energy going! 🎉",
+            "Love the enthusiasm! Keep shining. 🌟"
+        ]
+
+        # Basic tone detection
+        if "tired" in reflection or "sad" in reflection or "hard" in reflection:
+            tone = "supportive"
+            ai_response = random.choice(supportive_responses)
+        elif "excited" in reflection or "happy" in reflection or "great" in reflection:
+            tone = "excited"
+            ai_response = random.choice(excited_responses)
+        else:
+            tone = "neutral"
+            ai_response = random.choice(encouraging_responses)
+
+        return Response({
+            "ai_response": ai_response,
+            "tone": tone
+        })
 
 @api_view(["POST"])
 @permission_classes([IsAuthenticated])

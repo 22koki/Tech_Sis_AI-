@@ -11,6 +11,12 @@ from .serializers import *
 
 from .models import StudyMaterial, AgeBasedTip, StructuredContent
 from .serializers import StudyMaterialSerializer, AgeBasedTipSerializer, StructuredContentSerializer
+from rest_framework.decorators import api_view
+
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated  # or any custom permission
+
 
 
 # 1. User Profile
@@ -99,3 +105,20 @@ class AgeBasedTipViewSet(viewsets.ModelViewSet):
 class StructuredContentViewSet(viewsets.ModelViewSet):
     queryset = StructuredContent.objects.all()
     serializer_class = StructuredContentSerializer
+
+@api_view(["POST"])
+@permission_classes([IsAuthenticated])
+def submit_reflection(request):
+    text = request.data.get("reflection", "")
+    tone = "confident" if "confident" in text.lower() else "nervous" if "nervous" in text.lower() else "neutral"
+
+    # Fake AI Response based on tone
+    response = {
+        "confident": "You're doing amazing! Keep shining and lifting others as you rise. 🌟",
+        "nervous": "It’s okay to feel nervous—every brave girl starts somewhere! You've got this. 💪",
+        "neutral": "Always remember, each day is a chance to learn something new. ✨"
+    }.get(tone, "Keep going!")
+
+    log = ConfidenceLog.objects.create(user=request.user, reflection=text, ai_response=response, tone=tone)
+    serializer = ConfidenceLogSerializer(log)
+    return Response(serializer.data)

@@ -1,11 +1,22 @@
 // src/components/pages/Dashboard.js
 import React, { useState } from "react";
-import { FaBook, FaUserFriends, FaUser, FaSun, FaMoon, FaChalkboardTeacher, FaComments, FaCheckCircle } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+import { 
+  FaBook, 
+  FaUserFriends, 
+  FaUser, 
+  FaSun, 
+  FaMoon, 
+  FaChalkboardTeacher, 
+  FaComments, 
+  FaCheckCircle 
+} from "react-icons/fa";
 import '../styles/global.css';
-
 
 function Dashboard() {
   const [darkMode, setDarkMode] = useState(true);
+  const navigate = useNavigate();
+
   const toggleTheme = () => {
     setDarkMode(!darkMode);
     document.body.classList.toggle("light-mode");
@@ -13,7 +24,7 @@ function Dashboard() {
 
   return (
     <div className={`dashboard-container ${darkMode ? 'dark' : 'light'}`}>
-      {/* Toggle Button */}
+      {/* Toggle Theme Button */}
       <div className="theme-toggle-btn" onClick={toggleTheme}>
         {darkMode ? <FaSun size={20} color="#f7a8f0" /> : <FaMoon size={20} color="#1a1a2e" />}
       </div>
@@ -23,11 +34,11 @@ function Dashboard() {
         <h2>🌍 TechSister AI</h2>
         <nav>
           <ul>
-            <li><FaUser /> Profile</li>
-            <li><FaBook /> Courses</li>
-            <li><FaCheckCircle /> Progress</li>
-            <li><FaComments /> Confidence Journal</li>
-            <li><FaChalkboardTeacher /> Mentor Match</li>
+            <li onClick={() => navigate("/profile")}><FaUser /> Profile</li>
+            <li onClick={() => navigate("/courses")}><FaBook /> Courses</li>
+            <li onClick={() => navigate("/progress")}><FaCheckCircle /> Progress</li>
+            <li onClick={() => navigate("/ai-coach")}><FaComments /> Confidence Journal</li>
+            <li onClick={() => navigate("/mentorship")}><FaChalkboardTeacher /> Mentor Match</li>
           </ul>
         </nav>
       </aside>
